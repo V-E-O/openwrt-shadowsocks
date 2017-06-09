@@ -7,6 +7,7 @@ Shadowsocks-libev for OpenWrt
 ---
 
  本项目是 [shadowsocks-libev][1] 在 OpenWrt 上的移植  
+ 静态编译免去依赖库, 因为未使用代码会在编译时剔除, 尺寸有些许缩小
 
 特性
 ---
@@ -43,12 +44,8 @@ Shadowsocks-libev for OpenWrt
    # 以 ar71xx 平台为例
    tar xjf OpenWrt-SDK-ar71xx-for-linux-x86_64-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
    cd OpenWrt-SDK-ar71xx-*
-   # 添加 feeds
-   git clone https://github.com/shadowsocks/openwrt-feeds.git package/feeds
    # 获取 shadowsocks-libev Makefile
-   git clone https://github.com/shadowsocks/openwrt-shadowsocks.git package/shadowsocks-libev
-   # 选择要编译的包 Network -> shadowsocks-libev
-   make menuconfig
+   git clone https://github.com/V-E-O/openwrt-shadowsocks/openwrt-shadowsocks.git package/shadowsocks-libev
    # 开始编译
    make package/shadowsocks-libev/compile V=99
    ```

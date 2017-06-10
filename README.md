@@ -46,14 +46,14 @@ Shadowsocks-libev for OpenWrt
    cd OpenWrt-SDK-ar71xx-*
    # 获取 shadowsocks-libev Makefile
    git clone https://github.com/V-E-O/openwrt-shadowsocks.git package/shadowsocks-libev
-   # 安装依赖库
+   # 安装依赖库
    scripts/feeds update -a
    scripts/feeds install libpcre
    make V=s
-   # 开始编译
+   # 开始编译
    make package/shadowsocks-libev/compile V=s
    ```
-
+   
 配置
 ---
 

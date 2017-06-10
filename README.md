@@ -45,9 +45,9 @@ Shadowsocks-libev for OpenWrt
    tar xjf OpenWrt-SDK-ar71xx-for-linux-x86_64-gcc-4.8-linaro_uClibc-0.9.33.2.tar.bz2
    cd OpenWrt-SDK-ar71xx-*
    # 获取 shadowsocks-libev Makefile
-   git clone https://github.com/V-E-O/openwrt-shadowsocks/openwrt-shadowsocks.git package/shadowsocks-libev
+   git clone https://github.com/V-E-O/openwrt-shadowsocks.git package/shadowsocks-libev
    # 开始编译
-   make package/shadowsocks-libev/compile V=99
+   make package/shadowsocks-libev/compile V=s
    ```
 
 配置

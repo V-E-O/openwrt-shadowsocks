@@ -35,7 +35,7 @@ define Package/shadowsocks-libev/Default
 	CATEGORY:=Network
 	TITLE:=Lightweight Secured Socks5 Proxy
 	URL:=https://github.com/V-E-O/shadowsocks-libev
-	DEPENDS:=
+	DEPENDS:=+libpcre +libpthread
 endef
 
 Package/shadowsocks-libev = $(Package/shadowsocks-libev/Default)

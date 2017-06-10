@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014-2017 Jian Chang <aa65535@live.com>
+# Copyright (C) 2014-2017 Jian Chang <aa65535@live.com> & V.E.O
 #
 # This is free software, licensed under the GNU General Public License v3.
 # See /LICENSE for more information.
@@ -12,21 +12,21 @@ PKG_VERSION:=3.0.6
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/shadowsocks/shadowsocks-libev.git
+PKG_SOURCE_URL:=https://github.com/V-E-O/shadowsocks-libev.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_RELEASE)
-PKG_SOURCE_VERSION:=bc96aed3b0e800f18cf7fc54272e48a22160a554
+PKG_SOURCE_VERSION:=HEAD
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.xz
 
 PKG_LICENSE:=GPLv3
 PKG_LICENSE_FILES:=LICENSE
-PKG_MAINTAINER:=Jian Chang <aa65535@live.com>
+PKG_MAINTAINER:=Jian Chang <aa65535@live.com> & V.E.O
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)/$(BUILD_VARIANT)/$(PKG_NAME)-$(PKG_VERSION)-$(PKG_RELEASE)
 
 PKG_INSTALL:=1
 PKG_FIXUP:=autoreconf
 PKG_USE_MIPS16:=0
-PKG_BUILD_PARALLEL:=1
+PKG_BUILD_PARALLEL:=4
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -34,8 +34,8 @@ define Package/shadowsocks-libev/Default
 	SECTION:=net
 	CATEGORY:=Network
 	TITLE:=Lightweight Secured Socks5 Proxy
-	URL:=https://github.com/shadowsocks/shadowsocks-libev
-	DEPENDS:=+libev +libudns +libpcre +libpthread +libsodium +libmbedtls
+	URL:=https://github.com/V-E-O/shadowsocks-libev
+	DEPENDS:=
 endef
 
 Package/shadowsocks-libev = $(Package/shadowsocks-libev/Default)
@@ -47,7 +47,9 @@ endef
 
 Package/shadowsocks-libev-server/description = $(Package/shadowsocks-libev/description)
 
-CONFIGURE_ARGS += --disable-ssp --disable-documentation --disable-assert
+CFLAGS += -Os -fdata-sections -ffunction-sections -Wl,--gc-sections -fvisibility=hidden
+LDFLAGS += -fdata-sections -ffunction-sections -Wl,--gc-sections -fvisibility=hidden
+CONFIGURE_ARGS += --disable-ssp --disable-documentation --disable-assert --enable-shared=no
 
 define Package/shadowsocks-libev/install
 	$(INSTALL_DIR) $(1)/usr/bin
